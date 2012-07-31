@@ -98,12 +98,17 @@ The included themes are also included in the repo:
 * Pojoaque
 
 ###Custom options
-There are currently two custom options that are supported, as lid out below:
+There are currently three custom options that are supported, as lid out below:
 
     $(".gist").prettyGist({
+        showHeader: true,
 		extendedHeader: true,
 		showFooter: true
 	});
+	
+![image](http://i.imgur.com/ha4Ut.png)
+
+Setting `showHeader` to `false` will mean that no header is shown in the Gist. By default this is set to `true` to always show the header. 
 
 ![image](http://i.imgur.com/yt2m2.jpg)
 	
@@ -146,3 +151,18 @@ Pretty code itself is licensed under the MIT license, however, the license for H
     
 ###Errata
 If you have any questions, comments or problems: get in touch on [Twitter](http://twitter.com/Joe8Bit) and I'll be happy to help.
+
+###Contributing
+
+1. Fork.
+2. Make changes.
+3. Put in pull request.
+4. Viola!
+
+**Note:** Please minify the changes using uglifyjs and the -nm flag. Please also preserve the preceesing semi-colon in the minified version so as to aid when/if this script is concatenated. Please also use tabs not spaces!
+
+
+###Contributors
+Thanks!
+
+[kengu (Kenneth Gulbrandsøy)](https://github.com/kengu)

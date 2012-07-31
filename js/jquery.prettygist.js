@@ -147,10 +147,10 @@
 				}
 				markup += '</div>';
 			$(markup).insertBefore("#pretty-gist-" + gist_id + " .code-container");
-      // Remove modal if button clicked
-      $("#pretty-gist-" + gist_id + " .gist-modal").click(function(event){
-        $("#pretty-gist-" + gist_id).find(".gist-modal").remove();
-      });			
+			// Remove modal if button clicked
+			$("#pretty-gist-" + gist_id + " .gist-modal").click(function(event){
+				$("#pretty-gist-" + gist_id).find(".gist-modal").remove();
+			});			
 		}
 	};
 

@@ -32,7 +32,9 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// In this demo I'm prettifying all of the gists on a page, however, if you want just one to be prettified then just swap out .gist for it's unique ID: in the form gist-[id]
-			$(".gist").prettyGist();
+			$(".gist").prettyGist({
+				showHeader: false
+			});
 		});
 	</script>
 </head>
