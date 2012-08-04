@@ -37,7 +37,7 @@
 					if (typeof hljs !== "undefined") {
 						hljs.initHighlightingOnLoad();
 						// Add a custom class to the code-container to override certain default styles
-						$(".pretty-gist").addClass("hljs");
+						$(".pg-pretty-gist").addClass("pg-hljs");
 					}
 				});
 		},
@@ -58,15 +58,15 @@
 		layout: function (data, el, options) {
 			// Construct our pretty gist
 			var markup = '';
-			markup += '<div class="pretty-gist" id="pretty-gist-' + data.data.id + '">';
+			markup += '<div class="pg-pretty-gist" id="pg-pretty-gist-' + data.data.id + '">';
 			// Check if we're building an header
 			if (options.showHeader === true) {
 				// Build our header
-				markup += '<div class="header clear">';
+				markup += '<div class="pg-header pg-clear">';
 				// Check if we're building our extended header or not
 				if (options.extendedHeader === true) {
-					markup += '<div class="logo"><a href="https://github.com/">Github</a></div>';
-					markup += '<div class="user"><a href="https://github.com/' + data.data.user.login + '" class="github-user">';
+					markup += '<div class="pg-logo"><a href="https://github.com/">Github</a></div>';
+					markup += '<div class="pg-user"><a href="https://github.com/' + data.data.user.login + '" class="pg-github-user">';
 					// Check if the user who's gist this is has a custom avater, if not show the default github one
 					if (typeof data.data.user.avatar_url !== "undefined" && data.data.user.avatar_url.length > 0) {
 						markup += '<img src="' + data.data.user.avatar_url + '" alt="Avatar" width="34px" height="34px" />';
@@ -74,29 +74,29 @@
 						markup += '<img src="https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png" alt="Avatar" width="34px" height="34px" />';
 					}
 					markup += '</div>';
-					markup += '<div class="github-user-data">';
+					markup += '<div class="pg-github-user-data">';
 					markup += '<h2><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
 					markup += '<h3><a href="https://github.com/' + data.data.user.login + '">' + data.data.user.login + '</a></h3>';
 					markup += '</div>';
 				} else {
 					// build our smaller header if no extended header being shown
-					markup += '<h2 class="single"><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
+					markup += '<h2 class="pg-single"><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
 				}
 				markup += '</div>';
 			}
 			// Build code pane by grabbing each line of the default embedded gist and creating list items in an ordered list to get line numbers 
-			markup += '<div class="code-container"><ol>';
+			markup += '<div class="pg-code-container"><ol>';
 			$.each($(el).find(".line"), function (i) {
-				markup += '<li class="pretty-line" id="pretty-line-' + i + '"><pre><code>' + $(this).html() + '</pre></code></li>';
+				markup += '<li class="pg-pretty-line" id="pg-pretty-line-' + i + '"><pre><code>' + $(this).html() + '</pre></code></li>';
 			});
 			markup += '</ol></div>';
 			// Check if we want a footer, if we do: build it!
 			if (options.showFooter === true) {
-				markup += '<div class="footer clear">';
-				markup += '<a href="https://gist.github.com/gists/' + data.data.id + '/download" class="button left">Download Gist</a>';
-				markup += '<a href="#" class="button middle show-embed" data-embed="https://gist.github.com/' + data.data.id + '.js">Embed Gist</a>';
-				markup += '<a href="#" class="button right show-clone-url" data-clone-url="git://gist.github.com/' + data.data.id + '.git">Clone Gist</a>';
-				markup += '<a href="#" class="button single show-plugin-info">Info</a>';
+				markup += '<div class="pg-footer pg-clear">';
+				markup += '<a href="https://gist.github.com/gists/' + data.data.id + '/download" class="pg-button pg-left">Download Gist</a>';
+				markup += '<a href="#" class="pg-button pg-middle pg-show-embed" data-embed="https://gist.github.com/' + data.data.id + '.js">Embed Gist</a>';
+				markup += '<a href="#" class="pg-button pg-right pg-show-clone-url" data-clone-url="git://gist.github.com/' + data.data.id + '.git">Clone Gist</a>';
+				markup += '<a href="#" class="pg-button pg-single pg-show-plugin-info">Info</a>';
 				markup += '</div>';
 			}
 			markup += '</div>';
@@ -106,21 +106,21 @@
 		bind: function (gist_id) {
 			// Bind our click events if we're showing a footer
 			// Show embed code if button clicked
-			$("#pretty-gist-" + gist_id + " .show-embed").click(function (event) {
+			$("#pg-pretty-gist-" + gist_id + " .pg-show-embed").click(function (event) {
 				event.preventDefault();
 				var data = '&lt;script src=&quot;' + $(this).attr("data-embed") + '&quot;>&lt;/script>',
 					title = 'Embed code:';
 				PrettyGist.prototype.modal(gist_id, title, data);
 			});
 			// Show clone URL if button clicked
-			$("#pretty-gist-" + gist_id + " .show-clone-url").click(function (event) {
+			$("#pg-pretty-gist-" + gist_id + " .pg-show-clone-url").click(function (event) {
 				event.preventDefault();
 				var data = $(this).attr("data-clone-url"),
 					title = 'Clone url:';
 				PrettyGist.prototype.modal(gist_id, title, data);
 			});
 			// Show plugin info if button clicked
-			$("#pretty-gist-" + gist_id + " .show-plugin-info").click(function (event) {
+			$("#pg-pretty-gist-" + gist_id + " .pg-show-plugin-info").click(function (event) {
 				event.preventDefault();
 				var title = 'Pretty Gist by <a href="http://www.joepettersson.com/pretty-gist/">Joe Pettersson</a><br />A plugin to make prettier and more functional embedded Github Gists';
 				PrettyGist.prototype.modal(gist_id, title);
@@ -130,21 +130,21 @@
 		// The utility function used if we're showing a modal
 		modal: function (gist_id, title, data) {
 			// Close any open modals
-			$("#pretty-gist-" + gist_id).find(".gist-modal").remove();
+			$("#pg-pretty-gist-" + gist_id).find(".pg-gist-modal").remove();
 			var markup = '',
-				width = $("#pretty-gist-" + gist_id).outerWidth() - 2,
-				padding = ($("#pretty-gist-" + gist_id + " .code-container").outerHeight() / 2) - 23;
+				width = $("#pg-pretty-gist-" + gist_id).outerWidth() - 2,
+				padding = ($("#pg-pretty-gist-" + gist_id + " .pg-code-container").outerHeight() / 2) - 23;
 
-			markup += '<div class="gist-modal" style="width: ' + width + 'px; padding: ' + padding + 'px 0px;">';
+			markup += '<div class="pg-gist-modal" style="width: ' + width + 'px; padding: ' + padding + 'px 0px;">';
 			markup += '<p>' + title + '</p>';
 			if (typeof data !== "undefined") {
-				markup += '<input type="text" value="' + data + '" class="gist-input" name="embed-url" />';
+				markup += '<input type="text" value="' + data + '" class="pg-gist-input" name="embed-url" />';
 			}
 			markup += '</div>';
-			$(markup).insertBefore("#pretty-gist-" + gist_id + " .code-container");
+			$(markup).insertBefore("#pg-pretty-gist-" + gist_id + " .pg-code-container");
 			// Remove modal if button clicked
-			$("#pretty-gist-" + gist_id + " .gist-modal").click(function (event) {
-				$("#pretty-gist-" + gist_id).find(".gist-modal").remove();
+			$("#pg-pretty-gist-" + gist_id + " .pg-gist-modal").click(function (event) {
+				$("#pretty-gist-" + gist_id).find(".pg-gist-modal").remove();
 			});
 		}
 	};

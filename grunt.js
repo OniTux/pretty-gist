@@ -22,13 +22,13 @@ module.exports = function(grunt) {
 				dest: 'dist/prettygist.min.css'
 			}
 		},
-		// jasmine: {
-		// 	all: {
-		// 		src:['specs/*.html'],
-		// 		errorReporting: true,
-		// 		timeout: 20000
-		// 	}
-		// },
+		jasmine: {
+			all: {
+				src:['specs/*.html'],
+				errorReporting: true,
+				timeout: 20000
+			}
+		},
 		lint: {
 			files: ['src/**/*.js']
 		},
@@ -56,8 +56,8 @@ module.exports = function(grunt) {
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'lint min cssmin');
-	// grunt.loadNpmTasks('grunt-jasmine-task');
+	grunt.registerTask('default', 'lint jasmine min cssmin');
+	grunt.loadNpmTasks('grunt-jasmine-task');
 	grunt.loadNpmTasks('grunt-css');
 };
 
