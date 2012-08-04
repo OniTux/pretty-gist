@@ -14,27 +14,25 @@
 	<meta name="viewport" content="width=device-width">
 
 	<!-- The core (and required) stylesheet -->
-	<link rel="stylesheet" href="css/prettygist.min.css">
+	<link rel="stylesheet" href="../dist/prettygist.min.css">
 	<!-- A syntax stylesheet is only required if you want syntax highlighting in your pretty gist's, there are quite a few styles to choose from located in syntax-styles directory -->
-	<link rel="stylesheet" href="css/syntax-styles/solarized_dark.css">
+	<link rel="stylesheet" href="../lib/syntax-styles/solarized_dark.css">
 
 	<!-- You can ingore this demo.css style sheet entirely -->
-	<link rel="stylesheet" href="css/demo/demo.css">
+	<link rel="stylesheet" href="assets/demo.css">
 	<!-- You can ingore this demo.css style sheet entirely -->
 
-	<script src="js/jquery.min.js"></script>
+	<script src="../lib/jquery.min.js"></script>
 
 	<!-- This is the core plugin, and is required -->
-	<script src="js/jquery.prettygist.min.js"></script>
+	<script src="../dist/jquery.prettygist.min.js"></script>
 	<!-- This is the core of the syntax highlighting extension, it is not required for the core plugin to function but if you want syntax highlighting it's required -->
-	<script src="js/highlight.pack.js"></script>
+	<script src="../lib/highlight.pack.js"></script>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// In this demo I'm prettifying all of the gists on a page, however, if you want just one to be prettified then just swap out .gist for it's unique ID: in the form gist-[id]
-			$(".gist").prettyGist({
-				showHeader: false
-			});
+			$(".gist").prettyGist();
 		});
 	</script>
 </head>
