@@ -153,13 +153,36 @@ Pretty code itself is licensed under the MIT license, however, the license for H
 If you have any questions, comments or problems: get in touch on [Twitter](http://twitter.com/Joe8Bit) and I'll be happy to help.
 
 ###Contributing
+1. Fork
+2. Do yo' thang
+2. Send pull request
 
-1. Fork.
-2. Make changes.
-3. Put in pull request.
-4. Viola!
+**Notes and requirements for contributing:**
 
-**Note:** Please minify the changes using uglifyjs and the -nm flag. Please also preserve the preceesing semi-colon in the minified version so as to aid when/if this script is concatenated. Please also use tabs not spaces!
+* All code must be linted.
+* All contributions must have tests.
+* You must run the build command to minify `src` before submitting pull request.
+
+###Building and Testing
+This scripts build and test process is based on the [NodeJS](http://nodejs.org) toolchain, so [NodeJS](http://nodejs.org) and [NPM](http://npmjs.org) being installed are prerequisities.
+
+The tests are also run with [PhantomJS](http://phantomjs.org), so it will need to be installed first, if it isn't already, to do so in OSX with the awesome [HomeBrew](http://mxcl.github.com/homebrew/) package manager just run the following command:
+
+	brew install phantomjs
+
+ 
+When you have Node/NPM/Phantom installed, you can use the following commands to build the script:
+
+	git clone https://github.com/JoePettersson/jquery-github-widget.git
+	cd jquery-github-widget
+	npm install
+	grunt
+
+Running the final `grunt` command will lint the JavaScript, run the tests and minify the JavaScript and CSS into the `dist` directory.
+
+If you just wish to run the tests, you can run the following command form the project root:
+
+	grunt jasmine
 
 
 ###Contributors
