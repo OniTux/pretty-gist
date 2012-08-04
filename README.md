@@ -1,5 +1,7 @@
 #Pretty Gist
 
+[![Build Status](https://secure.travis-ci.org/JoePettersson/pretty-gist.png?branch=master)](http://travis-ci.org/JoePettersson/pretty-gist)
+
 A jQuery plugin to make prettier and more functional embedded Github Gists.
 
 ![image](http://i.imgur.com/lz8c8.jpg)
