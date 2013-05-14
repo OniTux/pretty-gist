@@ -5,9 +5,9 @@
 	// Setup our defaults, there are only three options for the plugin, set out below (and in more details in the README)
 	var pluginName = 'prettyGist',
 		defaults = {
-			showHeader: true,
-			extendedHeader: true,
-			showFooter: true
+			showHeader: false,
+			extendedHeader: false,
+			showFooter: false
 		};
 
 	// The function that is called on instantiation
@@ -66,17 +66,19 @@
 				// Check if we're building our extended header or not
 				if (options.extendedHeader === true) {
 					markup += '<div class="pg-logo"><a href="https://github.com/">Github</a></div>';
-					markup += '<div class="pg-user"><a href="https://github.com/' + data.data.user.login + '" class="pg-github-user">';
-					// Check if the user who's gist this is has a custom avater, if not show the default github one
-					if (typeof data.data.user.avatar_url !== "undefined" && data.data.user.avatar_url.length > 0) {
-						markup += '<img src="' + data.data.user.avatar_url + '" alt="Avatar" width="34px" height="34px" />';
-					} else {
-						markup += '<img src="https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png" alt="Avatar" width="34px" height="34px" />';
+					if(data.data.user != null){
+						markup += '<div class="pg-user"><a href="https://github.com/' + data.data.user.login + '" class="pg-github-user">';
+						// Check if the user who's gist this is has a custom avater, if not show the default github one
+						if (typeof data.data.user.avatar_url !== "undefined" && data.data.user.avatar_url.length > 0) {
+							markup += '<img src="' + data.data.user.avatar_url + '" alt="Avatar" width="34px" height="34px" />';
+						} else {
+							markup += '<img src="https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png" alt="Avatar" width="34px" height="34px" />';
+						}
+						markup += '</div>';
+						markup += '<div class="pg-github-user-data">';
+						markup += '<h2><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
+						markup += '<h3><a href="https://github.com/' + data.data.user.login + '">' + data.data.user.login + '</a></h3>';
 					}
-					markup += '</div>';
-					markup += '<div class="pg-github-user-data">';
-					markup += '<h2><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
-					markup += '<h3><a href="https://github.com/' + data.data.user.login + '">' + data.data.user.login + '</a></h3>';
 					markup += '</div>';
 				} else {
 					// build our smaller header if no extended header being shown
@@ -87,7 +89,7 @@
 			// Build code pane by grabbing each line of the default embedded gist and creating list items in an ordered list to get line numbers 
 			markup += '<div class="pg-code-container"><ol>';
 			$.each($(el).find(".line"), function (i) {
-				markup += '<li class="pg-pretty-line" id="pg-pretty-line-' + i + '"><pre><code>' + $(this).html() + '</pre></code></li>';
+				markup += '<li class="pg-pretty-line" id="pg-pretty-line-' + i + '"><pre class="pg-pretty-line"><code>' + $(this).html() + '</pre></code></li>';
 			});
 			markup += '</ol></div>';
 			// Check if we want a footer, if we do: build it!
