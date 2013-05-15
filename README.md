@@ -121,15 +121,6 @@ Setting `showFooter` to `false` will, self-evidently mean that the footer is not
 Both of these config options can be seen at the [demo url](http://www.joepettersson.com/demo/pretty-gist/).
 
 
-###Changes made by the Mouse
-
-in short, pretty-gist now works with Wordpress.
-
-- The main JS source now checks for valid user.data (and doesn't fuck up)
-- added a few more attributes to the main css file to protect it against wordpress 
-
-There are still some small open issues.
-
 ###License
 
 Pretty code itself is licensed under the MIT license, however, the license for Highlight.js is as follows:
