@@ -5,9 +5,9 @@
 	// Setup our defaults, there are only three options for the plugin, set out below (and in more details in the README)
 	var pluginName = 'prettyGist',
 		defaults = {
-			showHeader: false,
-			extendedHeader: false,
-			showFooter: false
+			showHeader: true,
+			extendedHeader: true,
+			showFooter: true
 		};
 
 	// The function that is called on instantiation
@@ -74,19 +74,19 @@
 						} else {
 							markup += '<img src="https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png" alt="Avatar" width="34px" height="34px" />';
 						}
-						markup += '</div>';
+						markup += '</a></div>';
 						markup += '<div class="pg-github-user-data">';
 						markup += '<h2><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
 						markup += '<h3><a href="https://github.com/' + data.data.user.login + '">' + data.data.user.login + '</a></h3>';
+                        markup += '</div>'
 					}
-					markup += '</div>';
 				} else {
 					// build our smaller header if no extended header being shown
 					markup += '<h2 class="pg-single"><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
 				}
 				markup += '</div>';
 			}
-			// Build code pane by grabbing each line of the default embedded gist and creating list items in an ordered list to get line numbers 
+			// Build code pane by grabbing each line of the default embedded gist and creating list items in an ordered list to get line numbers
 			markup += '<div class="pg-code-container"><ol>';
 			$.each($(el).find(".line"), function (i) {
 				markup += '<li class="pg-pretty-line" id="pg-pretty-line-' + i + '"><pre class="pg-pretty-line"><code>' + $(this).html() + '</pre></code></li>';
