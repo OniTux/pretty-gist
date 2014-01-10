@@ -10,12 +10,6 @@ module.exports = function(grunt) {
 				'* Copyright (c) 2012 Joe Pettersson *\n' +
 				'* Licensed under the MIT License */'
 		},
-		min: {
-			dist: {
-				src: ['<banner:meta.banner>', 'src/jquery.prettygist.js'],
-				dest: 'dist/jquery.prettygist.min.js'
-			}
-		},
 		cssmin: {
 			dist: {
 				src: ['<banner:meta.banner>', 'src/prettygist.css'],
@@ -44,20 +38,31 @@ module.exports = function(grunt) {
 				undef: true,
 				boss: true,
 				eqnull: true,
-				browser: true
+				browser: true,
+                globals: {
+                    jQuery: true
+                }
 			},
-			globals: {
-				jQuery: true
-			}
+            files: ['src/**/*.js']
 		},
 		uglify: {
-			 mangle: {toplevel: true}
-		}
+            options: {
+                 mangle: {toplevel: true}
+            },
+            build: {
+                files: {
+                    'dist/jquery.prettygist.min.js': ['<banner:meta.banner>', 'src/jquery.prettygist.js']
+                }
+            }
+    	}
 	});
 
 	// Default task.
-	grunt.registerTask('default', 'lint jasmine min cssmin');
-	grunt.loadNpmTasks('grunt-jasmine-task');
+	grunt.registerTask('default', ['jshint', 'min', 'cssmin']);
+    grunt.registerTask('min', ['uglify']);
+	grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-css');
 };
 
