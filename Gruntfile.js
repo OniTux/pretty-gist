@@ -18,9 +18,11 @@ module.exports = function(grunt) {
 		},
 		jasmine: {
 			all: {
-				src:['specs/*.html'],
-				errorReporting: true,
-				timeout: 20000
+                src: 'src/**/*.js',
+                options: {
+                    specs: 'specs/spec/*.js',
+                    helpers: 'specs/helpers/*.js'
+                }
 			}
 		},
 		lint: {
