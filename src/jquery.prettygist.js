@@ -78,7 +78,7 @@
 						markup += '<div class="pg-github-user-data">';
 						markup += '<h2><a href="https://gist.github.com/gists/' + data.data.id + '">' + data.data.description + '</a></h2>';
 						markup += '<h3><a href="https://github.com/' + data.data.user.login + '">' + data.data.user.login + '</a></h3>';
-                        markup += '</div>'
+                        markup += '</div>';
 					}
 				} else {
 					// build our smaller header if no extended header being shown
