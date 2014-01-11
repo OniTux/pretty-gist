@@ -173,8 +173,8 @@ html[xmlns] .pg-clear { display: block;}
 	-webkit-border-radius 3px;
 	border-radius: 3px;
 	text-indent: -9999px;
-	width: 16px;
-	height: 16px;
+	width: 32px;
+	height: 32px;
 	background-color: #ebebeb;
 	background-position: 7px -79px;
 	background-repeat: no-repeat;
@@ -210,6 +210,7 @@ html[xmlns] .pg-clear { display: block;}
 	border: 0px;
 	padding: 0px;
 	overflow: visible;
+    background-color: transparent !important;
 }
 .pg-pretty-gist .pg-code-container code {
 	padding-left: 20px;
